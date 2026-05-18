@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Movie Hub</title>
+<title>OneTapWatch</title>
 
 <style>
 
@@ -20,6 +20,7 @@ color:white;
 padding:15px;
 }
 
+/* HEADER */
 .header{
 display:flex;
 justify-content:space-between;
@@ -28,19 +29,21 @@ margin-bottom:20px;
 }
 
 .logo{
-font-size:28px;
+font-size:26px;
 font-weight:bold;
 color:red;
+letter-spacing:1px;
 }
 
 .search{
 padding:10px;
-width:50%;
+width:55%;
 border:none;
 border-radius:20px;
 outline:none;
 }
 
+/* SECTION TITLE */
 .section{
 margin-top:20px;
 margin-bottom:10px;
@@ -48,12 +51,14 @@ font-size:20px;
 font-weight:bold;
 }
 
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:15px;
 }
 
+/* CARD */
 .card{
 background:#1a1a1a;
 border-radius:12px;
@@ -64,12 +69,12 @@ transition:0.3s;
 }
 
 .card:hover{
-transform:scale(1.05);
+transform:scale(1.04);
 }
 
 .card img{
 width:100%;
-height:250px;
+height:180px; /* MEDIUM SIZE */
 object-fit:cover;
 }
 
@@ -85,7 +90,7 @@ text-align:center;
 <body>
 
 <div class="header">
-<div class="logo">🎬 MOVIE HUB</div>
+<div class="logo">ONETAPWATCH</div>
 <input type="text" class="search" placeholder="Search...">
 </div>
 
@@ -98,18 +103,22 @@ Trending
 <!-- VIDEO 1 -->
 <a class="card" href="https://yourlink1.com">
 <img src="https://picsum.photos/300/400">
-<div class="title">
-Fantasy World Part 1
-</div>
+<div class="title">Fantasy World Part 1</div>
 </a>
 
 <!-- VIDEO 2 -->
 <a class="card" href="https://yourlink2.com">
 <img src="https://picsum.photos/301/400">
-<div class="title">
-Dragon Story Part 2
-</div>
+<div class="title">Dragon Story Part 2</div>
 </a>
+
+<!-- ADD MORE BELOW -->
+<!--
+<a class="card" href="YOUR_LINK">
+<img src="YOUR_IMAGE">
+<div class="title">YOUR TITLE</div>
+</a>
+-->
 
 </div>
 
