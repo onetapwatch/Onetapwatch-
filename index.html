@@ -1,21 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Movie Hub</title>
 
 <style>
-body{
-background:#111;
-color:white;
-font-family:Arial;
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0d0d0d;
+color:white;
 padding:15px;
 }
 
-h1{
-text-align:center;
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:red;
+}
+
+.search{
+padding:10px;
+width:50%;
+border:none;
+border-radius:20px;
+outline:none;
+}
+
+.section{
+margin-top:20px;
+margin-bottom:10px;
+font-size:20px;
+font-weight:bold;
 }
 
 .grid{
@@ -25,9 +55,16 @@ gap:15px;
 }
 
 .card{
-background:#222;
-border-radius:10px;
+background:#1a1a1a;
+border-radius:12px;
 overflow:hidden;
+text-decoration:none;
+color:white;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
 }
 
 .card img{
@@ -36,28 +73,42 @@ height:250px;
 object-fit:cover;
 }
 
-.card p{
+.title{
 padding:10px;
+font-size:14px;
 text-align:center;
 }
-</style>
 
+</style>
 </head>
 
 <body>
 
-<h1>🎬 Movie Hub</h1>
+<div class="header">
+<div class="logo">🎬 MOVIE HUB</div>
+<input type="text" class="search" placeholder="Search...">
+</div>
+
+<div class="section">
+Trending
+</div>
 
 <div class="grid">
 
-<a class="card" href="https://example.com">
+<!-- VIDEO 1 -->
+<a class="card" href="https://yourlink1.com">
 <img src="https://picsum.photos/300/400">
-<p>Fantasy Part 1</p>
+<div class="title">
+Fantasy World Part 1
+</div>
 </a>
 
-<a class="card" href="https://example.com">
+<!-- VIDEO 2 -->
+<a class="card" href="https://yourlink2.com">
 <img src="https://picsum.photos/301/400">
-<p>Fantasy Part 2</p>
+<div class="title">
+Dragon Story Part 2
+</div>
 </a>
 
 </div>
