@@ -2,140 +2,398 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OneTapWatch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Recovery Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Inter',sans-serif;
 }
 
 body{
-background:#0d0d0d;
-color:white;
-padding:15px;
+background:#f5f7fb;
+color:#111827;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px;
 }
 
-/* HEADER */
-.header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
+.container{
+width:100%;
+max-width:700px;
+}
+
+.card{
+background:white;
+border-radius:24px;
+padding:35px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
 .logo{
-font-size:26px;
-font-weight:bold;
-color:red;
-letter-spacing:1px;
+width:70px;
+height:70px;
+border-radius:18px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-weight:800;
+font-size:24px;
+margin-bottom:20px;
 }
 
-.search{
-padding:10px;
-width:55%;
-border:none;
-border-radius:20px;
+h1{
+font-size:30px;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#6b7280;
+margin-bottom:25px;
+line-height:1.6;
+}
+
+label{
+display:block;
+font-size:14px;
+font-weight:600;
+margin-bottom:8px;
+margin-top:18px;
+}
+
+input,select,textarea{
+width:100%;
+padding:14px;
+border:1px solid #d1d5db;
+border-radius:12px;
+font-size:15px;
 outline:none;
 }
 
-/* SECTION TITLE */
-.section{
-margin-top:20px;
-margin-bottom:10px;
-font-size:20px;
-font-weight:bold;
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#2563eb;
 }
 
-/* ✅ CHANGED: SINGLE COLUMN LAYOUT */
-.grid{
-display:flex;
-flex-direction:column;
-gap:15px;
+textarea{
+resize:none;
+height:120px;
 }
 
-/* CARD */
-.card{
-background:#1a1a1a;
-border-radius:12px;
-overflow:hidden;
-text-decoration:none;
-color:white;
-transition:0.3s;
-}
-
-.card:hover{
-transform:scale(1.03);
-}
-
-/* ✅ CHANGED: CINEMATIC IMAGE */
-.card img{
+.btn{
+margin-top:25px;
 width:100%;
-aspect-ratio:16/9;
-object-fit:cover;
-display:block;
+padding:15px;
+border:none;
+border-radius:14px;
+background:#2563eb;
+color:white;
+font-weight:700;
+cursor:pointer;
+font-size:16px;
 }
 
-/* TITLE */
-.title{
-padding:10px;
+.btn:hover{
+opacity:.95;
+}
+
+.hidden{
+display:none;
+}
+
+.progress-wrap{
+margin-top:30px;
+}
+
+.progress{
+height:14px;
+background:#e5e7eb;
+border-radius:999px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+transition:.4s;
+}
+
+.status{
+margin-top:25px;
+font-size:18px;
+font-weight:600;
+}
+
+.review-item{
+padding:14px;
+background:#f8fafc;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.badge{
+display:inline-block;
+background:#dcfce7;
+color:#166534;
+padding:8px 14px;
+border-radius:999px;
+font-size:13px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.step{
+margin-bottom:20px;
 font-size:14px;
-text-align:center;
+font-weight:700;
+color:#2563eb;
 }
 
+.security{
+margin-top:20px;
+padding:15px;
+background:#eff6ff;
+border-radius:12px;
+font-size:14px;
+color:#1e40af;
+}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<div class="logo">ONETAPWATCH</div>
-<input type="text" class="search" placeholder="Search...">
+<div class="container">
+
+<!-- STEP 1 -->
+
+<div class="card" id="step1">
+
+<div class="logo">AR</div>
+
+<div class="step">STEP 1 OF 4</div>
+
+<h1>Account Recovery Request</h1>
+
+<p class="subtitle">
+Submit your account details so our team can evaluate available recovery options.
+</p>
+
+<label>Full Name</label>
+<input id="name" type="text">
+
+<label>Email Address</label>
+<input id="email" type="email">
+
+<label>Username</label>
+<input id="username" type="text">
+
+<label>Issue Type</label>
+<select id="issue">
+<option>Account Disabled</option>
+<option>Account Locked</option>
+<option>Account Suspended</option>
+<option>Account Access Issue</option>
+</select>
+
+<button class="btn" onclick="startVerification()">
+Continue
+</button>
+
+<div class="security">
+🔒 Information submitted through this form should be handled according to your privacy policy and applicable laws.
 </div>
 
-<div class="section">
-Trending
 </div>
 
-<div class="grid">
+<!-- STEP 2 -->
 
-<!-- VIDEO 1 -->
-<a class="card" href="https://shrinkme.click/N01">
-  <img src="https://i.ibb.co/7cwwS6x/aldatan-milf-nilgunun-bol-videolu-ifsa-arsivi-1536x906.webp">
-  <div class="title">Cheating MILF Nilgün's Archive</div>
-</a>
+<div class="card hidden" id="step2">
 
-<!-- VIDEO 2 -->
-<a class="card" href="https://shrinkme.click/N02">
-  <img src="https://i.ibb.co/NR6Gb7h/genc-ve-itaatkar-seks-kolesi-sinemin-arsivi-1536x922.webp">
-  <div class="title">Those who can't do justice to her now need our lady to urgently find someone else to be her slave</div>
-</a>
+<div class="logo">AR</div>
 
-<!-- VIDEO 3 -->
-<a class="card" href="https://shrinkme.click/N03">
-  <img src="https://i.ibb.co/GQZVv4vX/shawty-isimli-hatunun-seks-arsivi-1536x922.webp">
-  <div class="title">Our sister is both very experienced and radiates feminine energy. Your dick will be rock hard with this archive full of videos</div>
-</a>
-  
-<!-- VIDEO 3 -->
-<a class="card" href="https://shrinkme.click/N04">
-  <img src="https://i.ibb.co/JZsdBZt/9-videoluk-farkli-kisilerin-ifsa-arsivi-sizlerle-1200x675.webp">
-  <div class="title">We've prepared 9 mini-archives for our followers, featuring items found deep within our archives, many of which have been deleted or shared intermittently. Enjoy!</div>
-</a>
-  
-<!-- ADD MORE BELOW -->
-<!--
-<a class="card" href="YOUR_LINK">
-  <img src="YOUR_IMAGE_URL">
-  <div class="title">YOUR TITLE</div>
-</a>
--->
+<div class="step">STEP 2 OF 4</div>
+
+<h1>Verification In Progress</h1>
+
+<p class="subtitle">
+Please wait while we review your submitted information.
+</p>
+
+<div class="progress-wrap">
+
+<div class="progress">
+<div class="progress-bar" id="bar"></div>
+</div>
+
+<div class="status" id="statusText">
+Starting verification...
+</div>
 
 </div>
+
+</div>
+
+<!-- STEP 3 -->
+
+<div class="card hidden" id="step3">
+
+<div class="logo">AR</div>
+
+<div class="step">STEP 3 OF 4</div>
+
+<h1>Account Assessment</h1>
+
+<p class="subtitle">
+Provide additional information to help us understand your situation.
+</p>
+
+<label>Approximate Account Age</label>
+<input id="age" placeholder="e.g. 3 Years">
+
+<label>Follower Count</label>
+<input id="followers">
+
+<label>Following Count</label>
+<input id="following">
+
+<label>Number Of Posts</label>
+<input id="posts">
+
+<label>Account Type</label>
+<select id="accountType">
+<option>Personal</option>
+<option>Creator</option>
+<option>Business</option>
+</select>
+
+<label>Last Access Date</label>
+<input id="lastAccess">
+
+<label>Additional Notes</label>
+<textarea id="notes"></textarea>
+
+<button class="btn" onclick="showReview()">
+Generate Review
+</button>
+
+</div>
+
+<!-- STEP 4 -->
+
+<div class="card hidden" id="step4">
+
+<div class="badge">
+Assessment Generated
+</div>
+
+<h1>Case Summary</h1>
+
+<p class="subtitle">
+Review your submitted information before proceeding.
+</p>
+
+<div id="summary"></div>
+
+<button class="btn">
+Continue
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+function startVerification(){
+
+document.getElementById('step1').classList.add('hidden');
+document.getElementById('step2').classList.remove('hidden');
+
+const messages=[
+"Reviewing submitted information...",
+"Checking account status...",
+"Preparing assessment...",
+"Generating recovery profile..."
+];
+
+let progress=0;
+let msg=0;
+
+let interval=setInterval(()=>{
+
+progress+=25;
+
+document.getElementById("bar").style.width=
+progress+"%";
+
+if(msg<messages.length){
+document.getElementById("statusText").innerText=
+messages[msg];
+msg++;
+}
+
+if(progress>=100){
+
+clearInterval(interval);
+
+setTimeout(()=>{
+
+document.getElementById('step2').classList.add('hidden');
+document.getElementById('step3').classList.remove('hidden');
+
+},1000);
+
+}
+
+},1200);
+
+}
+
+function showReview(){
+
+document.getElementById('step3').classList.add('hidden');
+document.getElementById('step4').classList.remove('hidden');
+
+let html=`
+
+<div class="review-item"><strong>Name:</strong> ${name.value}</div>
+
+<div class="review-item"><strong>Email:</strong> ${email.value}</div>
+
+<div class="review-item"><strong>Username:</strong> ${username.value}</div>
+
+<div class="review-item"><strong>Issue:</strong> ${issue.value}</div>
+
+<div class="review-item"><strong>Account Age:</strong> ${age.value}</div>
+
+<div class="review-item"><strong>Followers:</strong> ${followers.value}</div>
+
+<div class="review-item"><strong>Following:</strong> ${following.value}</div>
+
+<div class="review-item"><strong>Posts:</strong> ${posts.value}</div>
+
+<div class="review-item"><strong>Type:</strong> ${accountType.value}</div>
+
+<div class="review-item"><strong>Last Access:</strong> ${lastAccess.value}</div>
+
+`;
+
+document.getElementById('summary').innerHTML=html;
+
+}
+
+</script>
 
 </body>
 </html>
