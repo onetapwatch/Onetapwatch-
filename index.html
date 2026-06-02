@@ -312,10 +312,47 @@ Review your submitted information before proceeding.
 
 <div id="summary"></div>
 
-<button class="btn">
+<button class="btn" onclick="showRecoveryStatus()">
 Continue
 </button>
+</div>
+  
+<!-- STEP 5 -->
 
+<div class="card hidden" id="step5">
+
+<div class="badge">
+Recovery Case Active
+</div>
+
+<h1>Recovery Status</h1>
+
+<p class="subtitle">
+Your recovery request has been submitted and assigned for review.
+</p>
+
+<div class="review-item">
+<strong>✓ Request Registered</strong><br>
+Your recovery request has been successfully registered and assigned to a specialist.<br><br>
+Updated: <span id="registeredTime"></span>
+</div>
+
+<div class="review-item">
+<strong>⟳ Recovery Team Processing</strong><br>
+Your case is currently undergoing review. Due to increased request volume, processing may take up to 72 hours.
+</div>
+
+<button class="btn" onclick="openPriorityReview()">
+Priority Review
+</button>
+
+<div class="review-item">
+<strong>○ Recovery Authorization</strong><br>
+Authorization will be issued once specialist review has been completed.
+</div>
+
+</div>
+  
 <script>
 
 function saveCurrentStep(step){
@@ -448,6 +485,17 @@ let html=`
 document.getElementById('summary').innerHTML=html;
 
 }
+  function showRecoveryStatus(){
+
+document.getElementById('step4').classList.add('hidden');
+document.getElementById('step5').classList.remove('hidden');
+
+document.getElementById('registeredTime').innerText =
+new Date().toLocaleString();
+
+saveCurrentStep('step5');
+
+  }
 
 </script>
 
