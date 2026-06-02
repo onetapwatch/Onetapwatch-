@@ -318,6 +318,12 @@ Continue
 
 <script>
 
+function saveCurrentStep(step){
+
+localStorage.setItem('currentStep', step);
+
+}
+
 function validateStep1(){
 
 const fullName = document.getElementById('name').value.trim();
@@ -364,6 +370,8 @@ startVerification();
 }
 
 function startVerification(){
+
+saveCurrentStep('step2');
 
 document.getElementById('step1').classList.add('hidden');
 document.getElementById('step2').classList.remove('hidden');
