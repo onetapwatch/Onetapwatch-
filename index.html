@@ -19,6 +19,7 @@ body{
   background:#ffffff;
   min-height:100vh;
   margin:0;
+}
 
 .container{
   width:100%;
@@ -173,6 +174,104 @@ margin-bottom:20px;
 font-size:14px;
 font-weight:500;
 }
+  .case-id{
+background:#f8fafc;
+padding:14px;
+border-radius:12px;
+font-weight:700;
+margin-bottom:25px;
+}
+
+.timeline{
+margin-top:10px;
+}
+
+.timeline-item{
+display:flex;
+gap:15px;
+align-items:flex-start;
+}
+
+.timeline-icon{
+width:42px;
+height:42px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:700;
+flex-shrink:0;
+}
+
+.completed .timeline-icon{
+background:#22c55e;
+color:white;
+}
+
+.processing .timeline-icon{
+background:#facc15;
+color:black;
+}
+
+.pending .timeline-icon{
+background:#e5e7eb;
+color:#6b7280;
+}
+
+.timeline-content{
+padding-bottom:10px;
+}
+
+.timeline-content h3{
+margin-bottom:6px;
+}
+
+.timeline-content p{
+color:#6b7280;
+margin-bottom:10px;
+}
+
+.timeline-line{
+width:4px;
+height:45px;
+background:#22c55e;
+margin-left:19px;
+}
+
+.pending-line{
+background:#e5e7eb;
+}
+
+.processing-spin{
+animation:spin 1.2s linear infinite;
+}
+
+@keyframes spin{
+from{
+transform:rotate(0deg);
+}
+to{
+transform:rotate(360deg);
+}
+}
+
+.mini-progress{
+height:10px;
+background:#e5e7eb;
+border-radius:999px;
+overflow:hidden;
+margin-top:8px;
+margin-bottom:8px;
+max-width:260px;
+}
+
+.mini-progress-bar{
+height:100%;
+width:25%;
+background:linear-gradient(90deg,#facc15,#f59e0b);
+transition:.5s;
+  }
+  
 </style>
 </head>
 
@@ -331,25 +430,69 @@ Recovery Case Active
 Your recovery request has been submitted and assigned for review.
 </p>
 
-<div class="review-item">
-<strong>✓ Request Registered</strong><br>
-Your recovery request has been successfully registered and assigned to a specialist.<br><br>
-Updated: <span id="registeredTime"></span>
+<div class="case-id">
+Case ID: AR-<span id="caseNumber"></span>
 </div>
 
-<div class="review-item">
-<strong>⟳ Recovery Team Processing</strong><br>
-Your case is currently undergoing review. Due to increased request volume, processing may take up to 72 hours.
+<div class="timeline">
+
+<div class="timeline-item completed">
+<div class="timeline-icon">✓</div>
+
+<div class="timeline-content">
+<h3>Request Registered</h3>
+<p>Your recovery request has been successfully registered.</p>
+<span id="registeredTime"></span>
+</div>
+</div>
+
+<div class="timeline-line"></div>
+
+<div class="timeline-item processing">
+
+<div class="timeline-icon processing-spin">
+↻
+</div>
+
+<div class="timeline-content">
+
+<h3>Recovery Team Processing</h3>
+
+<p id="liveStatus">
+Checking account records...
+</p>
+
+<div class="mini-progress">
+<div class="mini-progress-bar" id="miniBar"></div>
+</div>
+
+<div id="percentText">
+25% Complete
+</div>
+
+</div>
+</div>
+
+<div class="timeline-line pending-line"></div>
+
+<div class="timeline-item pending">
+
+<div class="timeline-icon">
+3
+</div>
+
+<div class="timeline-content">
+<h3>Recovery Authorization</h3>
+<p>Waiting for review completion.</p>
+</div>
+
+</div>
+
 </div>
 
 <button class="btn" onclick="openPriorityReview()">
 Priority Review
 </button>
-
-<div class="review-item">
-<strong>○ Recovery Authorization</strong><br>
-Authorization will be issued once specialist review has been completed.
-</div>
 
 </div>
   
@@ -485,15 +628,71 @@ let html=`
 document.getElementById('summary').innerHTML=html;
 
 }
+  
   function showRecoveryStatus(){
 
 document.getElementById('step4').classList.add('hidden');
 document.getElementById('step5').classList.remove('hidden');
 
 document.getElementById('registeredTime').innerText =
-new Date().toLocaleString();
+'Updated: ' + new Date().toLocaleString();
+
+document.getElementById('caseNumber').innerText =
+Math.floor(100000 + Math.random()*900000);
 
 saveCurrentStep('step5');
+
+startLiveTracking();
+
+}
+
+  function startLiveTracking(){
+
+const statuses = [
+"Checking account records...",
+"Verifying ownership history...",
+"Reviewing recovery eligibility...",
+"Preparing authorization request...",
+"Final specialist review..."
+];
+
+let progress = 25;
+let index = 0;
+
+const bar =
+document.getElementById('miniBar');
+
+const percent =
+document.getElementById('percentText');
+
+const status =
+document.getElementById('liveStatus');
+
+const interval = setInterval(()=>{
+
+if(progress >= 95){
+clearInterval(interval);
+return;
+}
+
+index = (index + 1) % statuses.length;
+
+status.innerText = statuses[index];
+
+progress += 10;
+
+bar.style.width = progress + "%";
+
+percent.innerText =
+progress + "% Complete";
+
+},4000);
+
+  }
+
+  function openPriorityReview(){
+
+alert("Priority Review Coming Soon");
 
   }
 
