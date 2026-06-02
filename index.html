@@ -200,7 +200,7 @@ Submit your account details so our team can evaluate available recovery options.
 <option>Account Access Issue</option>
 </select>
 
-<button class="btn" onclick="startVerification()">
+<button class="btn" onclick="validateStep1()">
 Continue
 </button>
 
@@ -306,7 +306,31 @@ Continue
 </div>
 
 </div>
+function validateStep1(){
 
+const fullName = document.getElementById('name').value.trim();
+const email = document.getElementById('email').value.trim();
+const username = document.getElementById('username').value.trim();
+
+if(!fullName){
+    alert('Please enter your full name');
+    return;
+}
+
+if(!email){
+    alert('Please enter your email address');
+    return;
+}
+
+if(!username){
+    alert('Please enter your username');
+    return;
+}
+
+startVerification();
+
+}
+  
 <script>
 
 function startVerification(){
