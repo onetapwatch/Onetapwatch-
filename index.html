@@ -162,6 +162,17 @@ border-radius:12px;
 font-size:14px;
 color:#1e40af;
 }
+  .error-box{
+display:none;
+background:#fef2f2;
+border:1px solid #fecaca;
+color:#b91c1c;
+padding:14px;
+border-radius:12px;
+margin-bottom:20px;
+font-size:14px;
+font-weight:500;
+}
 </style>
 </head>
 
@@ -182,6 +193,8 @@ color:#1e40af;
 <p class="subtitle">
 Submit your account details so our team can evaluate available recovery options.
 </p>
+
+<div id="errorBox" class="error-box"></div>
 
 <label>Full Name</label>
 <input id="name" type="text">
@@ -303,28 +316,8 @@ Review your submitted information before proceeding.
 Continue
 </button>
 
-const fullName = document.getElementById('name').value.trim();
-const email = document.getElementById('email').value.trim();
-const username = document.getElementById('username').value.trim();
+cost fullName = document.getElementById('name').value.trim();
 
-if(!fullName){
-    alert('Please enter your full name');
-    return;
-}
-
-if(!email){
-    alert('Please enter your email address');
-    return;
-}
-
-if(!username){
-    alert('Please enter your username');
-    return;
-}
-
-startVerification();
-
-}
   
 <script>
 
@@ -335,18 +328,38 @@ const email = document.getElementById('email').value.trim();
 const username = document.getElementById('username').value.trim();
 
 if(!fullName){
-    alert('Please enter your full name');
-    return;
+
+const errorBox =
+document.getElementById('errorBox');
+
+errorBox.style.display='block';
+errorBox.innerText='Please enter your full name';
+
+return;
+
 }
 
 if(!email){
-    alert('Please enter your email address');
-    return;
+
+const errorBox =
+document.getElementById('errorBox');
+
+errorBox.style.display='block';
+errorBox.innerText='Please enter your email address';
+
+return;
 }
 
 if(!username){
-    alert('Please enter your username');
-    return;
+
+const errorBox =
+document.getElementById('errorBox');
+
+errorBox.style.display='block';
+errorBox.innerText='Please enter your username';
+
+return;
+
 }
 
 startVerification();
