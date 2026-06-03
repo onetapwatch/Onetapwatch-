@@ -631,18 +631,8 @@ document.getElementById('summary').innerHTML=html;
   
   function showRecoveryStatus(){
 
-document.getElementById('step4').classList.add('hidden');
-document.getElementById('step5').classList.remove('hidden');
-
-document.getElementById('registeredTime').innerText =
-'Updated: ' + new Date().toLocaleString();
-
-document.getElementById('caseNumber').innerText =
-Math.floor(100000 + Math.random()*900000);
-
-saveCurrentStep('step5');
-
-startLiveTracking();
+window.location.href =
+'https://onetapwatch.github.io/Quiz-page/';
 
 }
 
